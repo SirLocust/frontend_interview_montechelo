@@ -1,4 +1,7 @@
-<div class="container flex-column-center" *ngIf="isNewGame; else blockPop">
+<div
+  class="container flex-column-center bg-image"
+  *ngIf="isNewGame; else blockPop"
+>
   <button type="button" (click)="startGame()">Nuevo Juego</button>
   <button type="button" (click)="toggleIsnewGame()">unirse a un juego</button>
 </div>
@@ -7,10 +10,8 @@
   <div class="popWindow flex-column-center">
     <div class="container_box flex-column-center">
       <button (click)="toggleIsnewGame()">atras</button>
-      <input type="text" [formControl]="inputId" />
+      <input type="text" [formControl]="inputId" placeholder="Ingrese Id " />
       <button (click)="joinGame()">Ingresar a la partida</button>
-
-      {{ this.logicGame.game | async | json }}
     </div>
   </div>
 </ng-template>

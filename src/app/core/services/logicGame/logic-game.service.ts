@@ -24,7 +24,7 @@ export class LogicGameService {
     const tmpGame: Game = {
       id: this.generateId(),
       player1Name: 'Jugador 1',
-      player2Name: 'Jugador 2”',
+      player2Name: 'Jugador 2',
       board: this.generateBoard(),
       playerInit: this.whatPlayerIs,
       turnPlayer: this.whatPlayerIs,

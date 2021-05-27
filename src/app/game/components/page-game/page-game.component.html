@@ -25,7 +25,7 @@
       *ngIf="game.stateMatch !== stateMatch.WAITING"
     ></app-board>
     <div class="waiting" *ngIf="game.stateMatch === stateMatch.WAITING">
-      Esperando Contricante
+      Esperando Contrincante
     </div>
     <div *ngIf="game.stateMatch === stateMatch.FINISH">
       <button type="button" (click)="newGame(game.id)">

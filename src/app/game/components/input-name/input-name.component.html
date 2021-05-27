@@ -7,7 +7,7 @@
   </button>
 </div>
 
-<div *ngIf="IsEditing">
+<div *ngIf="IsEditing" class="flex-column-center">
   <input type="text" [formControl]="inputName" />
   <button (click)="saveNewName()" type="button">save</button>
 </div>
