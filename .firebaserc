@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "technicaltestmontechelo": {
+      "hosting": {
+        "tic-tac-toe": [
+          "technicaltestmontechelo"
+        ]
+      }
+    }
+  }
+}
