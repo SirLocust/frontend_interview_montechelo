@@ -1,15 +1,23 @@
 <div *ngIf="this.game$ | async as game" class="container_game">
   <div class="table">
-    <h1>
-      {{ game?.player1Name }}
-    </h1>
+    <div>
+      <app-input-name
+        [id]="game.id"
+        [playerName]="game.player1Name"
+        [player]="player.PLAYER_1"
+      ></app-input-name>
+    </div>
     <div>
       <h1>Id Juego</h1>
       <h2>{{ game.id }}</h2>
     </div>
-    <h1>
-      {{ game?.player2Name }}
-    </h1>
+    <div>
+      <app-input-name
+        [id]="game.id"
+        [playerName]="game.player2Name"
+        [player]="player.PLAYER_2"
+      ></app-input-name>
+    </div>
   </div>
   <div class="flex-center box">
     <app-board

@@ -1,0 +1,13 @@
+<div *ngIf="!IsEditing" class="flex-center">
+  <h1>
+    {{ playerName }}
+  </h1>
+  <button type="button" (click)="editingMode()" *ngIf="player === whatIsPlayer">
+    Change
+  </button>
+</div>
+
+<div *ngIf="IsEditing">
+  <input type="text" [formControl]="inputName" />
+  <button (click)="saveNewName()" type="button">save</button>
+</div>

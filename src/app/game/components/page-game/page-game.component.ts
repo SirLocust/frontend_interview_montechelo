@@ -1,3 +1,4 @@
+import { Players } from './../../../core/enums/typePlayers';
 import { StateMatch } from '@core/enums/stateMatch';
 
 import { LogicGameService } from '@core/services/logicGame/logic-game.service';
@@ -10,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageGameComponent implements OnInit {
   stateMatch = StateMatch;
+  player = Players;
   game$ = this.logicGame.game;
   constructor(private logicGame: LogicGameService) {}
 
