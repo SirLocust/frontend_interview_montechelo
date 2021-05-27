@@ -21,7 +21,11 @@
       "dom"
     ],
     "paths": {
-      "@core/*":["src/app/core/*"]
+      "@core/*":["src/app/core/*"],
+      "@initScreen/*":["src/app/init-screen/*"],
+      "@environments/*":["src/environments/*"]
+
+
     }
   },
   "angularCompilerOptions": {

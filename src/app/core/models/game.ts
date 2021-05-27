@@ -1,6 +1,7 @@
 export interface Game {
-  player1: String;
-  player2: String;
+  id: string;
+  player1: string;
+  player2: string;
   board: number[];
   numberGame: number;
 }

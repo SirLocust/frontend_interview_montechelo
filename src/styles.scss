@@ -1,1 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.container{
+  width: 80%;
+  height: 100vh;
+  margin: auto;
+  
+}
+.flex-column-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+// .modal{
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   z-index: 1;
+//   width: 100vw;
+//   height: 100vh;
+//   // margin: auto;
+//   background-color: rgba(0, 0, 0, 0.859);
+// }
