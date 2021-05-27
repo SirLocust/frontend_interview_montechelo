@@ -1,0 +1,7 @@
+<div class="board" *ngIf="game.isPlayer1 && game.isPlayer2">
+  <ng-container *ngFor="let item of game.board; index as i">
+    <div class="board-item" (click)="movement(i, game)">
+      {{ item }}
+    </div>
+  </ng-container>
+</div>

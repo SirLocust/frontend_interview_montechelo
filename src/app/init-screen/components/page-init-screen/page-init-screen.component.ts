@@ -15,7 +15,7 @@ export class PageInitScreenComponent implements OnInit {
   ngOnInit(): void {}
 
   startGame(): void {
-    this.logicGame.newGame();
+    this.logicGame.createGame();
   }
 
   toggleIsnewGame() {
@@ -26,6 +26,6 @@ export class PageInitScreenComponent implements OnInit {
       console.log('not value');
     }
 
-    this.logicGame.loadGame(this.inputId.value);
+    this.logicGame.joinGame(this.inputId.value);
   }
 }

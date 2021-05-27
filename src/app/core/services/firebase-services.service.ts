@@ -23,4 +23,7 @@ export class FirebaseServicesService {
   loadGame(id: string): Observable<Game | undefined> {
     return this.gamesCollection.doc(id).valueChanges();
   }
+  setGamePartial(game: Partial<Game>, id: string): void {
+    this.gamesCollection.doc(id).update(game);
+  }
 }

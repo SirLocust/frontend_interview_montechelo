@@ -1,0 +1,28 @@
+<div *ngIf="this.game$ | async as game" class="container_game">
+  <div class="table">
+    <h1>
+      {{ game?.player1Name }}
+    </h1>
+    <div>
+      <h1>Id Juego</h1>
+      <h2>{{ game.id }}</h2>
+    </div>
+    <h1>
+      {{ game?.player2Name }}
+    </h1>
+  </div>
+  <div class="flex-center box">
+    <app-board
+      [game]="game"
+      *ngIf="game.stateMatch !== stateMatch.WAITING"
+    ></app-board>
+    <div class="waiting" *ngIf="game.stateMatch === stateMatch.WAITING">
+      Esperando Contricante
+    </div>
+    <div *ngIf="game.stateMatch === stateMatch.FINISH">
+      <button type="button" (click)="newGame(game.id)">
+        Reiniciar Partida
+      </button>
+    </div>
+  </div>
+</div>

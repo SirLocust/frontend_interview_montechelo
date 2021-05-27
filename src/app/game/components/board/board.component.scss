@@ -1,0 +1,21 @@
+.board{
+  background-color: aquamarine;
+  height: 400px;
+  width: 500px;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows:repeat(3,auto) ;
+  align-items: center;
+  justify-items: center;
+  border: 1px solid black;
+  gap: 1px;
+}
+
+.board-item{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+}

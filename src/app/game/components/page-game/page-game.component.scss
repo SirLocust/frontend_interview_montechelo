@@ -1,0 +1,23 @@
+
+.container_game{
+  width: 100vw;
+  height: 100%;
+}
+
+
+.table{
+  background-color: aqua;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 300px;
+}
+
+.box{
+  min-height: 600px;
+}
+
+.waiting{
+  background-color: aquamarine;
+}
