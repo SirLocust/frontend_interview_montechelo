@@ -14,11 +14,16 @@ export class LogicGameService {
   gameSubject = new Subject<Game>();
   game = this.gameSubject.asObservable();
   whatPlayerIs: Players = Players.NOT_PLAYER;
+
   constructor(
     private firebaseServices: FirebaseServicesService,
     private router: Router
   ) {}
 
+  /**
+   * create game
+   * @returns void
+   */
   createGame(): void {
     this.whatPlayerIs = Players.PLAYER_1;
     const tmpGame: Game = {
@@ -38,11 +43,18 @@ export class LogicGameService {
 
     this.router.navigate(['/game']);
   }
+  /**
+   * generate random id
+   * @returns string random id
+   */
   private generateId(): string {
     const randomNumber = Math.floor(Math.random() * 100000 + 1);
     return `tic${randomNumber}tac`;
   }
-
+  /**
+   * init board game clear
+   * @returns number
+   */
   private generateBoard(): number[] {
     let newArrray = [];
     for (let i = 0; i < 9; i++) {
@@ -50,15 +62,21 @@ export class LogicGameService {
     }
     return newArrray;
   }
-
-  loadGame(id: string) {
+  /**
+   * loading data using service data
+   * @param  {string} id from game
+   */
+  private loadGame(id: string) {
     this.firebaseServices.loadGame(id).subscribe((data) => {
       if (data !== undefined) {
         this.gameSubject.next(data);
       }
     });
   }
-
+  /**
+   * joing game with id game
+   * @param  {string} id from game
+   */
   joinGame(id: string): void {
     this.whatPlayerIs = Players.PLAYER_2;
     this.loadGame(id);
@@ -69,7 +87,12 @@ export class LogicGameService {
     this.firebaseServices.setGamePartial(tmpGame, id);
     this.router.navigate(['/game']);
   }
-
+  /**
+   * make movement game
+   * @param  {number} index index board
+   * @param  {Game} game object game
+   * @returns void
+   */
   Movement(index: number, game: Game): void {
     if (game.turnPlayer !== this.whatPlayerIs) {
       return;
@@ -84,8 +107,13 @@ export class LogicGameService {
       this.finishGame(game.id, game.playerInit);
     }
   }
-
-  finishGame(id: string, player: Players): void {
+  /**
+   * finish game
+   * @param  {string} id id from game
+   * @param  {Players} player witch player playing
+   * @returns void
+   */
+  private finishGame(id: string, player: Players): void {
     const tmpGame: Partial<Game> = {
       stateMatch: StateMatch.FINISH,
       playerInit:
@@ -93,8 +121,14 @@ export class LogicGameService {
     };
     this.firebaseServices.setGamePartial(tmpGame, id);
   }
-
-  setMovement(board: number[], player: Players, id: string): void {
+  /**
+   * save movement to database using service firebase service
+   * @param  {number[]} board board game
+   * @param  {Players} player witch player playing
+   * @param  {string} id id from game
+   * @returns void
+   */
+  private setMovement(board: number[], player: Players, id: string): void {
     const tmpGame: Partial<Game> = {
       board: board,
       turnPlayer:
@@ -102,6 +136,11 @@ export class LogicGameService {
     };
     this.firebaseServices.setGamePartial(tmpGame, id);
   }
+  /**
+   * generete new game , clear board and change state game
+   * @param  {string} id id from game
+   * @returns void
+   */
   newGame(id: string): void {
     const tmpGame: Partial<Game> = {
       board: this.generateBoard(),
@@ -109,8 +148,12 @@ export class LogicGameService {
     };
     this.firebaseServices.setGamePartial(tmpGame, id);
   }
-
-  isTied(board: number[]): boolean {
+  /**
+   * return if game tied
+   * @param  {number[]} board boar from game
+   * @returns boolean
+   */
+  private isTied(board: number[]): boolean {
     let isfull = board.find((element) => element === 0);
     console.log(isfull);
     if (isfull === undefined) {
@@ -118,7 +161,13 @@ export class LogicGameService {
     }
     return false;
   }
-  isWinnerMovement(board: number[], player: Players): boolean {
+  /**
+   * return if with movement win game
+   * @param  {number[]} board  boar from game
+   * @param  {Players} player witch player gaming
+   * @returns boolean
+   */
+  private isWinnerMovement(board: number[], player: Players): boolean {
     player = player === Players.PLAYER_1 ? 1 : 2;
     for (let i = 0; i <= 6; i += 3) {
       if (

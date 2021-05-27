@@ -1,5 +1,10 @@
 import { StateMatch } from './../enums/stateMatch';
 import { Players } from './../enums/typePlayers';
+/**
+ * Interface for Game object
+ * @interface
+ *
+ */
 export interface Game {
   id: string;
   player1Name: string;
