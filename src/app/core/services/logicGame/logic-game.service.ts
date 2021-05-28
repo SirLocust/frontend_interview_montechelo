@@ -80,13 +80,18 @@ export class LogicGameService {
   joinGame(id: string): void {
     this.whatPlayerIs = Players.PLAYER_2;
     this.loadGame(id);
-    const tmpGame: Partial<Game> = {
-      isPlayer2: true,
-      stateMatch: StateMatch.PLAYING,
-    };
-    this.firebaseServices.setGamePartial(tmpGame, id);
-    this.router.navigate(['/game']);
+    this.game.subscribe((data) => {
+      if (data.isPlayer2 === false) {
+        const tmpGame: Partial<Game> = {
+          isPlayer2: true,
+          stateMatch: StateMatch.PLAYING,
+        };
+        this.firebaseServices.setGamePartial(tmpGame, id);
+        this.router.navigate(['/game']);
+      }
+    });
   }
+
   /**
    * make movement game
    * @param  {number} index index board
